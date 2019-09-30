@@ -1,13 +1,12 @@
 var path = require('path')
 const express = require('express')
-const mockAPIResponse = require('./mockAPI.js')
 var aylien = require("aylien_textapi")
 const dotenv = require('dotenv')
 const bodyParser = require("body-parser")
 
 dotenv.config()
 
-projectData = {}
+var projectData = {}
 
 // set aylien API credentias
 var textapi = new aylien({
@@ -22,7 +21,7 @@ app.use(express.static('dist'))
 console.log(__dirname)
 
 app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
+    res.status(200).sendFile('dist/index.html')
 })
 
 // designates what port the app will listen to for incoming requests
@@ -38,9 +37,9 @@ app.use(bodyParser.json())
 const cors = require("cors")
 app.use(cors())
 
-app.get('/data', function(req, res) {
+app.get('/data', function (req, res) {
     // make sure we get the data
-    res.setTimeout(2000, function() {
+    res.setTimeout(2000, function () {
         res.send(projectData)
     })
 })
@@ -56,3 +55,5 @@ app.post('/all', function (req, res) {
         }
     });
 })
+
+module.exports = app
