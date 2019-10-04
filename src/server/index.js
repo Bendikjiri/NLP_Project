@@ -21,7 +21,7 @@ app.use(express.static('dist'))
 console.log(__dirname)
 
 app.get('/', function (req, res) {
-    res.status(200).sendFile('dist/index.html')
+    res.sendFile('dist/index.html')
 })
 
 // designates what port the app will listen to for incoming requests
@@ -37,13 +37,6 @@ app.use(bodyParser.json())
 const cors = require("cors")
 app.use(cors())
 
-app.get('/data', function (req, res) {
-    // make sure we get the data
-    res.setTimeout(2000, function () {
-        res.send(projectData)
-    })
-})
-
 app.post('/all', function (req, res) {
     textapi.classify({
         url: req.body.url
@@ -51,9 +44,8 @@ app.post('/all', function (req, res) {
         if (error === null) {
             response['categories'].forEach(function (c) {
                 projectData = c;
+                res.send(projectData);
             });
         }
     });
 })
-
-module.exports = app

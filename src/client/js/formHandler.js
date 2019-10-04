@@ -3,6 +3,7 @@ function handleSubmit(event) {
 
     // check what text was put into the form field
     let formText = document.getElementById('url').value
+    let name = document.getElementById('name').value
     if (client.checkForUrl(formText)) {
         const postUrl = async (url = '', data = {}) => {
             const response = await fetch(url, {
@@ -16,29 +17,14 @@ function handleSubmit(event) {
 
             try {
                 const newData = await response.json();
+                document.getElementById('results').innerHTML = `<div>Hi ${name}, this is your results\:</div><div>label: ${newData.label}</div><div>code: ${newData.code}</div><div>confidence: ${newData.confidence}</div>`
                 return newData
             } catch (error) {
                 console.log("error", error);
             }
         };
 
-        const getData = async (url = '') => {
-            const req = await fetch(url);
-            try {
-                const data = await req.json();
-                document.getElementById('results').innerHTML = `<div>label: ${data.label}</div><div>code: ${data.code}</div><div>confidence: ${data.confidence}</div>`
-            } catch (error) {
-                console.log("error", error);
-            }
-        };
-
         postUrl('/all', { url: formText })
-            .then(
-                getData('/data')
-            )
-
-
-
     }
 }
 
