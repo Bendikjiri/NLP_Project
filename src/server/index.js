@@ -1,17 +1,14 @@
 var path = require('path')
 const express = require('express')
 var aylien = require("aylien_textapi")
-const dotenv = require('dotenv')
 const bodyParser = require("body-parser")
 
-dotenv.config()
-
-var projectData = {}
+projectData = {}
 
 // set aylien API credentias
 var textapi = new aylien({
-    application_id: process.env.ID,
-    application_key: process.env.KEY
+    application_id: '84918b5c',
+    application_key: 'a700ed56dac26ad2c73f1f58a30cfb79'
 })
 
 const app = express()
