@@ -7,8 +7,8 @@ projectData = {}
 
 // set aylien API credentias
 var textapi = new aylien({
-    application_id: '84918b5c',
-    application_key: 'a700ed56dac26ad2c73f1f58a30cfb79'
+    application_id: 'c4c4a08c',
+    application_key: '4c3f8da1960f2875c9704145c2e791a4'
 })
 
 const app = express()
