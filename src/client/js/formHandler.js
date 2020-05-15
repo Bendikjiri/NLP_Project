@@ -24,14 +24,9 @@ function handleSubmit(event) {
             }
         };
 
-<<<<<<< HEAD
+
         postUrl('http://localhost:3000/all', { url: formText })
-||||||| ff948a6... Updated RegEx, Server endpoint URL
-        postUrl('http://localhost:8080/all', { url: formText })
-=======
-        postUrl('/all', { url: formText })
->>>>>>> parent of ff948a6... Updated RegEx, Server endpoint URL
-    }
+      }
 }
 
 export { handleSubmit }
