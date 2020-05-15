@@ -24,7 +24,7 @@ function handleSubmit(event) {
             }
         };
 
-        postUrl('http://localhost:8080/all', { url: formText })
+        postUrl('http://localhost:3000/all', { url: formText })
     }
 }
 
